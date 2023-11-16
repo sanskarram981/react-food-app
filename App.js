@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 
 const heading1 = document.createElement("h1");
 heading1.innerHTML = "Hello JavaScript!!";
@@ -12,11 +15,40 @@ const heading3 = React.createElement("h1",{id:"heading",className:"heading"},"He
 const root3 = ReactDOM.createRoot(document.getElementById("root"));
 root3.render(heading3);
 
-const heading4 = React.createElement("div",{},[React.createElement("h1",{},"this is heading1"),
-                                               React.createElement("h2",{},"this is heading2"),
-                                               React.createElement("h3",{},"this is heading3"),
-                                               React.createElement("h4",{},"this is heading4"),
-                                               React.createElement("h5",{},"this is heading5"),
-                                               React.createElement("h6",{},"this is heading6")]);
-const root4 = ReactDOM.createRoot(document.getElementById("root"));
-root4.render(heading4);                                               
+const heading4 = React.createElement("div",{},[React.createElement("h1",{id:1,key:1},"this is heading1"),
+                                               React.createElement("h2",{id:2,key:2},"this is heading2"),
+                                               React.createElement("h3",{id:3,key:3},"this is heading3"),
+                                               React.createElement("h4",{id:4,key:4},"this is heading4"),
+                                               React.createElement("h5",{id:5,key:5},"this is heading5"),
+                                               React.createElement("h6",{id:6,key:6},"this is heading6")]);
+
+
+
+const heading5 = (<div>
+          <h6 className="heading1-6" id="alpha" style={{textAlign:"center"}}>this is heading6</h6>
+          <h5 className="heading1-6">this is heading5</h5>
+          <h4 className="heading1-6">this is heading4</h4>
+          <h3 className="heading1-6">this is heading3</h3>
+          <h2 className="heading1-6">this is heading2</h2>
+          <h1 className="heading1-6">this is heading1</h1>
+</div>);     
+
+
+const HeadingComponent = () =>
+{
+    return (<h1>Hello HeadingComponent</h1>);
+};
+
+const Title = () => 
+{
+  return(
+    <div>
+    <HeadingComponent></HeadingComponent>
+    {
+        HeadingComponent()
+    }
+    <HeadingComponent/>
+    </div>
+  );
+};
+root3.render(<Title/>);                                               
