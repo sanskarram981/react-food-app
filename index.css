@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
+    background-color: #ebad4e;
 }
 
 .logo
@@ -11,6 +12,7 @@
     width:90px;
     height:90px;
     padding:5px;
+    border-radius: 90px;
 }
 
 .nav-items
@@ -22,7 +24,8 @@
 {
    list-style-type: none;
    display: flex;
-}
+   /* align-items: center;*/
+} 
 
 .nav-items > ul > li
 {
@@ -31,7 +34,7 @@
    font-weight: bold;
 }
 
-.search-filter
+.filter
 {
    display: flex;
    padding: 5px;
@@ -47,7 +50,7 @@
 .res-card
 {
     width:200px;
-    height:auto;
+    height:400px;
     background-color: #f0f0f0;
     margin:5px;
     text-align: center;
@@ -83,11 +86,25 @@
     margin-left:10px;
 }
 
-.search-filter > label{
+.filter > label{
     margin-right: 10px;
 }
 
 .showing
 {
     margin-left: 10px;
+}
+
+.login
+{
+    padding-top: 7.5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.rating-filter > button
+{
+  margin-left: 10px;
+  margin-right: 5px;
 }
