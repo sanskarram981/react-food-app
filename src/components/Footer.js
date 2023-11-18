@@ -2,7 +2,8 @@ const Footer = () =>
 {
    return(
     <div className="footer">
-    <h1>This is about footer</h1>
+    <h1>---------------नटखट बिहार-------------</h1>
+
     </div>
    );
 };

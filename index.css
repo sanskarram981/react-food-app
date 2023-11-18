@@ -108,3 +108,27 @@
   margin-left: 10px;
   margin-right: 5px;
 }
+
+.res-menu > ul{
+    list-style-type: none;
+}
+
+.res-menuitem:hover
+{
+  border:1px solid black;
+}
+
+.res-menuitem
+{
+    background-color: #f0f0f0;
+}
+
+.res-link
+{
+    text-decoration: none;
+    color:black;
+}
+
+.footer > h1{
+    text-align: center;
+}
