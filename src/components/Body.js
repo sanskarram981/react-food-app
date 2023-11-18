@@ -10,17 +10,17 @@ const Body = () =>
    
 
   const getData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.8040881&lng=86.3085152&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9360036&lng=77.6808131&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
     const jsonData = await data.json();
-    if(jsonData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants === undefined)
+    if(jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants === undefined)
     {
     setRestList([]);
     setFilteredRestList([]);
     }
     else
     {
-    setRestList(jsonData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestList(jsonData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setRestList(jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestList(jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
   }
 

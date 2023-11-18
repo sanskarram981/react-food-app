@@ -3,8 +3,12 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-import resList from "./utils/MockData";
-
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Cart from "./components/Cart";
+import Error from "./components/Error";
+import { ErrorCart } from "./components/Error";
 // const heading1 = document.createElement("h1");
 // heading1.innerHTML = "Hello JavaScript!!";
 // const heading2 = document.createElement("h1");
@@ -67,6 +71,26 @@ const AppLayout = () =>
    );
 };
 
+const myRouter = createBrowserRouter([
+  {
+    path:"/",
+    element:<AppLayout/>,
+    errorElement:<Error/>
+  },
+  {
+    path:"/about",
+    element:<About/>
+  },
+  {
+    path:"/contact",
+    element:<Contact/>
+  },
+  {
+    path:"/cart",
+    element:<Cart/>
+  }
+]);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout/>)
+root.render(<RouterProvider router={myRouter}/>)
