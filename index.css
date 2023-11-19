@@ -132,3 +132,14 @@
 .footer > h1{
     text-align: center;
 }
+
+.user-card
+{
+    background-color: #f0f0f0;
+    border :0.1px dotted black;
+}
+
+.user-card:hover{
+    border : 1px solid black;
+    cursor: pointer;
+}
