@@ -3,11 +3,13 @@ import resList, { simp } from "../utils/MockData";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => 
 {
    const[restList,setRestList] = useState([]);
    const[filteredRestList,setFilteredRestList] = useState([]);
    const[searchText,setSearchText] = useState("");
+   const onlineStatus = useOnlineStatus();
    
 
   const getData = async () => {
@@ -27,10 +29,11 @@ const Body = () =>
 
    useEffect(()=>{
       getData();
-      console.log("after firstime rendering");
-      return ()=>{console.log("before moving to another page")}
+      return ()=>{}
    },[]);
-   console.log("rendering of body");
+   
+   if(!onlineStatus)
+   return <h1>You are offline 📶</h1>
 
    return restList.length === 0 ? <Shimmer/> : (
     <div className="body">
