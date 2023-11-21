@@ -25,7 +25,12 @@ const Body = () =>
     }
   }
 
-   useEffect(()=>{getData()},[]);
+   useEffect(()=>{
+      getData();
+      console.log("after firstime rendering");
+      return ()=>{console.log("before moving to another page")}
+   },[]);
+   console.log("rendering of body");
 
    return restList.length === 0 ? <Shimmer/> : (
     <div className="body">
