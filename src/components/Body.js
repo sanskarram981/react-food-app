@@ -37,21 +37,21 @@ const Body = () =>
 
    return restList.length === 0 ? <Shimmer/> : (
     <div className="body">
-      <div className="filter">
+      <div className="filter flex items-center">
       <div className="search">
-     <input className="search-box" type="text" placeholder="search" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}></input>
-     <button onClick={()=>{
+     <input className="search-box border-2 border-black border-solid m-2" type="text" placeholder="search" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}></input>
+     <button className="bg-gray-100 m-2 rounded-sm py-0.5 px-2" onClick={()=>{
          setFilteredRestList(restList.filter((res) => res?.info?.name.toLowerCase().includes(searchText.toLowerCase())));
      }}>Search</button>
      </div>
      <div className="top-rating">
-      <button className="filter-button" onClick={() => {
+      <button className="filter-button bg-gray-100 m-2 py-0.5 px-2 rounded-sm" onClick={() => {
         setFilteredRestList(restList.filter((res) => res.info.avgRating >= 4));
       }}>Top Category Restaurant</button>
      </div>
      <div className="rating-filter">
-        <button>Rating</button>
-        <select defaultValue={2.5} onChange={(e)=>{
+        <button className="bg-gray-100 m-2 py-0.5 px-2 rounded-sm">Rating</button>
+        <select className="border-2 border-black border-solid m-2" defaultValue={2.5} onChange={(e)=>{
           setFilteredRestList(restList.filter((res) => res.info.avgRating > e.target.value));
         }}>
          <option value={4.5}>rating 4.5+</option>
@@ -61,11 +61,11 @@ const Body = () =>
          <option value={2.5}>rating 2.5+</option>
         </select>
      </div>
-     <div className="showing">
+     <div className="showing bg-gray-100 m-2 py-0.5 px-2 rounded-sm">
         Showing {filteredRestList.length} of {restList.length}
      </div>
     </div>
-    <div className="res-container">
+    <div className="res-container flex flex-wrap">
      {
         filteredRestList.map((res) => <Link className="res-link" key={res?.info?.id} to={`/restaurants/${res?.info?.id}`}><RestaurantCard resData={res}/></Link>)
      }   
