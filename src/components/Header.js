@@ -19,6 +19,7 @@ const Header = () =>
        <li><Link to="/" style={{color:"black",textDecoration:"none"}}>Home</Link></li>
        <li><Link to="/about" style={{color:"black",textDecoration:"none"}}>About</Link></li>
        <li><Link to="/contact" style={{color:"black",textDecoration:"none"}}>Contact</Link></li>
+       <li><Link to="/grocery" style={{color:"black",textDecoration:"none"}}>Grocery</Link></li>
        <li><Link to="/cart" style={{color:"black",textDecoration:"none"}}>Cart</Link></li>
        <li><button className="login" onClick={()=>{btnText === "Login"?setbtnText("LogOut"):setbtnText("Login")}}>{btnText}</button></li>
      </ul>
