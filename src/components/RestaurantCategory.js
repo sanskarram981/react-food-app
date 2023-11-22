@@ -9,7 +9,7 @@ const RestaurantCategory = (props) =>
     return(
         <div>
             <div className="flex justify-between bg-gray-300 p-2 shadow-white shadow-sm mx-3 my-2 rounded-lg cursor-pointer" onClick={()=>showItems?resetShowIndex():setShowIndex()}>
-                <span className="font-bold">{title}</span>
+                <span className="font-bold">{title} ({itemCards.length})</span>
                 <span className="font-bold">{"🔽"}</span>
             </div>
             {showItems && <ListCategory listData={itemCards}/>}
