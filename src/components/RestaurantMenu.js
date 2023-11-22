@@ -2,6 +2,7 @@ import { useEffect,useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
     const {resId} = useParams();
@@ -12,30 +13,22 @@ const RestaurantMenu = () => {
 
     const {name,city,cuisines,sla,avgRating,cloudinaryImageId,locality,areaName,costForTwo} = resMenu?.data?.cards[0]?.card?.card?.info;
     const {deliveryTime} = sla;
-    const {title,itemCards} = resMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    const categories = resMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+    const itemCategories = categories.filter((category)=> category.card.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+    
     return(
-        <div className="res-menu">
-        <h1>{name}</h1>
-        <h3>{`${locality}, ${areaName}, ${city}`}</h3>
-        <h3>{cuisines.join(",")}</h3>
-        <h3>Rs {costForTwo/100} for two</h3>
-        <h3>{deliveryTime} mins</h3>
-        <h3>{avgRating} stars</h3>
-        <hr></hr>
-        <h2>{title}</h2>
-        <ul>
+        <div className="bg-gray-200 w-9/12 m-auto rounded-sm py-2 mt-2">
+          <div className="text-center border-b-2 border-gray-500">
+            <h3 className="font-bold text-xl">{name}</h3>
+            <h4 className="font-bold">{locality},{areaName},{city}</h4>
+            <h4 className="font-bold">{cuisines.join(",")}</h4>
+            <h4><span className="font-bold">{avgRating}</span> stars rating, <span className="font-bold">₹ {costForTwo/100}</span> for two, delivers in <span className="font-bold">{deliveryTime}</span> mins.</h4>
+          </div>
+          <div>
             {
-                itemCards.map((item)=><li key={item?.card?.info?.id}>
-                    <div className="res-menuitem">
-                    <h3>{item?.card?.info?.name}</h3>
-                    <p>{item?.card?.info?.description}</p>
-                    <p>Rs. {item?.card?.info?.price/100 || item?.card?.info?.defaultPrice/100 } </p>
-                    {item?.card?.info?.isVeg === 1 ? <p>Veg</p>:<p>Non-Veg</p>}
-                    </div>
-                </li>)
-
+                itemCategories.map((category)=><RestaurantCategory key={category?.card?.card?.title} data={category?.card?.card}/>)
             }
-        </ul>
+          </div>
         </div>
     );
 }
