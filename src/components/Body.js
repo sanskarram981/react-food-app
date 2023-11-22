@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import resList, { simp } from "../utils/MockData";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { RestaurantCardVeg } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -10,6 +10,7 @@ const Body = () =>
    const[filteredRestList,setFilteredRestList] = useState([]);
    const[searchText,setSearchText] = useState("");
    const onlineStatus = useOnlineStatus();
+   const RestaurantCardPromoted = RestaurantCardVeg(RestaurantCard);
    
 
   const getData = async () => {
@@ -67,7 +68,11 @@ const Body = () =>
     </div>
     <div className="res-container flex flex-wrap">
      {
-        filteredRestList.map((res) => <Link className="res-link" key={res?.info?.id} to={`/restaurants/${res?.info?.id}`}><RestaurantCard resData={res}/></Link>)
+        filteredRestList
+        .map((res) => 
+        <Link className="res-link" key={res?.info?.id} to={`/restaurants/${res?.info?.id}`}>
+         {res?.info?.veg === undefined ? <RestaurantCard resData={res}/> : <RestaurantCardPromoted resData={res}/>}
+         </Link>)
      }   
     </div>
     </div>
