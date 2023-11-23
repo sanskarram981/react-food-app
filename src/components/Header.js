@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { LOGO_URL } from "../utils/Constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => 
 {
    const [btnText,setbtnText] = useState("Login");
    const onlineStatus = useOnlineStatus();
-   console.log("header-render");
+   const userData = useContext(UserContext);
+   const {username,email} = userData;
+
    return(
     <div className="header m-1 flex justify-between items-center bg-gray-200 border-2 border-black">
     <div className="logo-container">
@@ -22,6 +25,8 @@ const Header = () =>
        <li className="p-2 m-2"><Link to="/grocery" style={{color:"black",textDecoration:"none"}}>Grocery</Link></li>
        <li className="p-2 m-2"><Link to="/cart" style={{color:"black",textDecoration:"none"}}>Cart</Link></li>
        <li className="p-2 m-2"><button className="login bg-orange-400 px-2 pb-1 rounded-sm" onClick={()=>{btnText === "Login"?setbtnText("LogOut"):setbtnText("Login")}}>{btnText}</button></li>
+       <li className="p-2 m-2">{username}</li>
+       <li className="p-2 m-2">{email}</li>
      </ul>
     </div>
     </div>

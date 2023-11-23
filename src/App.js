@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy,useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -12,6 +12,7 @@ import { ErrorCart } from "./components/Error";
 import { Outlet } from "react-router-dom";
 import Dashboard from "./components/DashBoard";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./utils/UserContext.js";
 
 
 // const heading1 = document.createElement("h1");
@@ -69,12 +70,16 @@ const Grocery = lazy(()=>import("./components/Grocery.js"));
 
 const AppLayout = () => 
 {
+   const [username,setUsername] = useState("alpha");
+   const [email,setEmail] = useState("beta@gmail.com");
    return(
+    <UserContext.Provider value={{username:username,email:email,setUsername,setEmail}}>
     <div className="app">
     <Header/>
     <Outlet/>
     <Footer/>
     </div>
+    </UserContext.Provider>
    );
 };
 

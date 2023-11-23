@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import resList, { simp } from "../utils/MockData";
 import RestaurantCard, { RestaurantCardVeg } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 const Body = () => 
 {
    const[restList,setRestList] = useState([]);
@@ -11,6 +12,7 @@ const Body = () =>
    const[searchText,setSearchText] = useState("");
    const onlineStatus = useOnlineStatus();
    const RestaurantCardPromoted = RestaurantCardVeg(RestaurantCard);
+   const {username,email,setUsername,setEmail} = useContext(UserContext);
    
 
   const getData = async () => {
@@ -64,6 +66,12 @@ const Body = () =>
      </div>
      <div className="showing bg-gray-100 m-2 py-0.5 px-2 rounded-sm">
         Showing {filteredRestList.length} of {restList.length}
+     </div>
+     <div>
+        <input className="border-2 border-black border-solid m-2" type="text" placeholder="username" value={username} onChange={(e)=>setUsername(e.target.value)}></input>
+     </div>
+     <div>
+     <input className="border-2 border-black border-solid m-2" type="text" placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
      </div>
     </div>
     <div className="res-container flex flex-wrap">
