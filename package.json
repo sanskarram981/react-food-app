@@ -1,14 +1,11 @@
 {
-  "homepage": "https://sanskarram981.github.io/REACT-JS",
   "name": "react-learning",
   "version": "1.0.0",
   "description": "react learning by namaste react by aks",
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "build": "parcel build index.html"
   },
   "keywords": [
     "react"
