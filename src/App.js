@@ -9,7 +9,6 @@ import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import Error from "./components/Error";
 import { ErrorCart } from "./components/Error";
-import { Outlet } from "react-router-dom";
 import Dashboard from "./components/DashBoard";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext.js";
