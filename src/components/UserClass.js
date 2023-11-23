@@ -32,7 +32,6 @@ class UserClass extends React.Component
                     {
                         (data) =>{
                             const userData = data;
-                            console.log(userData);
                         }
                     }
                 </UserContext.Consumer>

@@ -1,9 +1,11 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/Constants";
+import { addItem } from "../utils/cartSlice";
 
 const ListCategory = (props) => {
 
     const itemCards = props.listData;
-    console.log("momo",itemCards);
+    const dispatcher = useDispatch();
     return(
         <div>
           {
@@ -14,7 +16,9 @@ const ListCategory = (props) => {
                 <p className="text-sm break-words">{item?.card?.info?.description}</p>
                 </div>
                 <div>
-                <label className="absolute bg-white text-black rounded-lg ml-6 mt-16 px-1 cursor-pointer" onClick={()=>window.alert("added to cart")}>Add +</label> 
+                <label className="absolute bg-white text-black rounded-lg ml-6 mt-16 px-1 cursor-pointer" onClick={()=>{
+                    dispatcher(addItem(item));
+                }}>Add +</label> 
                     <img className="w-24 h-24"src={CDN_URL+item?.card?.info?.imageId}/>              
                 </div>
             </div>)

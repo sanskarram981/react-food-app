@@ -13,6 +13,8 @@ import { Outlet } from "react-router-dom";
 import Dashboard from "./components/DashBoard";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext.js";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore.js";
 
 
 // const heading1 = document.createElement("h1");
@@ -73,6 +75,7 @@ const AppLayout = () =>
    const [username,setUsername] = useState("alpha");
    const [email,setEmail] = useState("beta@gmail.com");
    return(
+    <Provider store={appStore}>
     <UserContext.Provider value={{username:username,email:email,setUsername,setEmail}}>
     <div className="app">
     <Header/>
@@ -80,6 +83,7 @@ const AppLayout = () =>
     <Footer/>
     </div>
     </UserContext.Provider>
+    </Provider>
    );
 };
 

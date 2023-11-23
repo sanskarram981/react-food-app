@@ -3,6 +3,7 @@ import { LOGO_URL } from "../utils/Constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import {useSelector } from "react-redux";
 
 const Header = () => 
 {
@@ -10,6 +11,8 @@ const Header = () =>
    const onlineStatus = useOnlineStatus();
    const userData = useContext(UserContext);
    const {username,email} = userData;
+   const {items} = useSelector((store)=>store.cart);
+   
 
    return(
     <div className="header m-1 flex justify-between items-center bg-gray-200 border-2 border-black">
@@ -23,7 +26,7 @@ const Header = () =>
        <li className="p-2 m-2"><Link to="/about" style={{color:"black",textDecoration:"none"}}>About</Link></li>
        <li className="p-2 m-2"><Link to="/contact" style={{color:"black",textDecoration:"none"}}>Contact</Link></li>
        <li className="p-2 m-2"><Link to="/grocery" style={{color:"black",textDecoration:"none"}}>Grocery</Link></li>
-       <li className="p-2 m-2"><Link to="/cart" style={{color:"black",textDecoration:"none"}}>Cart</Link></li>
+       <li className="p-2 m-2"><Link to="/cart" style={{color:"black",textDecoration:"none"}}>Cart({items.length})</Link></li>
        <li className="p-2 m-2"><button className="login bg-orange-400 px-2 pb-1 rounded-sm" onClick={()=>{btnText === "Login"?setbtnText("LogOut"):setbtnText("Login")}}>{btnText}</button></li>
        <li className="p-2 m-2">{username}</li>
        <li className="p-2 m-2">{email}</li>
